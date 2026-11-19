@@ -1,0 +1,29 @@
+{
+  "rulepack": "sufficiency",
+  "status": "example — tune patterns and class expectations to your documents",
+  "pair_patterns": [
+    "由\\s*[“\"「]?(?P<old>[^，。；;“”\"「」]{1,40}?)[”\"」]?\\s*(?:改为|变更为|修改为|更改为|调整为|升级为|替换为)\\s*[“\"「]?(?P<new>[^，。；;“”\"「」]{1,40}?)[”\"」]?(?=[，。；;\\s]|$)",
+    "将\\s*[“\"「]?(?P<old>[^，。；;“”\"「」]{1,40}?)[”\"」]?\\s*(?:改为|变更为|修改为|更改为|调整为|升级为|替换为)\\s*[“\"「]?(?P<new>[^，。；;“”\"「」]{1,40}?)[”\"」]?(?=[，。；;\\s]|$)",
+    "(?P<old>[A-Za-z0-9.\\-_]{1,30})\\s*(?:→|->|—>)\\s*(?P<new>[A-Za-z0-9.\\-_]{1,30})"
+  ],
+  "fact_patterns": {
+    "value_unit": "[≤≥<>±~～]?\\s*\\d+(?:\\.\\d+)?\\s*(?:mm|cm|μm|um|nm|ms|s|min|h|Hz|kHz|MHz|GHz|mV|V|mA|A|W|kg|g|℃|°C|%|dB|fps|帧/秒|像素|px|MB|GB|rpm|kPa|Pa|N|mL|ml|L)(?![A-Za-z])",
+    "version": "\\b[Vv]\\d+(?:\\.\\d+)+\\b",
+    "code": "\\b\\d{9,16}\\b",
+    "quoted": "[“\"「]([^”\"」]{2,40})[”\"」]"
+  },
+  "require_in_classes": {
+    "version": ["software_release"],
+    "value_unit": ["technical_requirements", "inspection", "verification"],
+    "code": ["bom", "drawing", "material_spec"]
+  },
+  "revision_history": {
+    "expect_new_version_in_text": true,
+    "expect_ecr_id_in_text": false
+  },
+  "semantic_review": {
+    "excerpt_window": 2,
+    "header_lines": 30,
+    "max_excerpt_lines": 80
+  }
+}

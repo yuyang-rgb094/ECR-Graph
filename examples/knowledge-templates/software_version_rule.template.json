@@ -1,0 +1,1 @@
+{"pattern": "V(\\d+)\\.(\\d+)\\.(\\d+)", "components": ["major", "minor", "patch"], "registration_relevant": ["major"], "source": "<程序文件编号 + 章节>"}

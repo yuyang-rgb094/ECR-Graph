@@ -1,0 +1,159 @@
+{
+  "profile": "generic-ecr-zh",
+  "description": "Generic Chinese engineering change request (ECR / 工程更改申请单) layout. Copy and adapt to your own form; every pattern is a regular expression.",
+  "id_patterns": [
+    "(?<![A-Za-z0-9])([A-Z]{1,6}-\\d{4}-\\d{3,4})(?![0-9])",
+    "(?<![A-Za-z0-9])(ECR[-_]?\\d{4,10})(?![0-9])"
+  ],
+  "section_header": "(?:更改|变更)内容\\s*[（(]?\\s*([一二三四五六七八九十]+|\\d+)\\s*[)）]?",
+  "change_point_header": "(?:更改|变更)点\\s*(\\d+)\\s*[:：]",
+  "fields": {
+    "problem": [
+      "问题描述",
+      "现状描述",
+      "变更前"
+    ],
+    "cause": [
+      "原因分析",
+      "变更原因"
+    ],
+    "solution": [
+      "解决方案",
+      "更改方案",
+      "变更方案",
+      "变更后"
+    ],
+    "verification": [
+      "验证建议",
+      "验证方案",
+      "验证要求",
+      "测试建议"
+    ],
+    "risk": [
+      "风险评估",
+      "风险分析",
+      "风险"
+    ]
+  },
+  "checkbox_groups": {
+    "nature": "(?:信息来源及)?更改性质|变更性质|变更来源",
+    "change_class": "更改类别|变更类别|变更等级",
+    "stage": "产品所处阶段|所处阶段",
+    "urgency": "类型|紧急程度",
+    "registration_flag": "是否涉及[^|：:]*注册|是否注册变更|注册变更评估",
+    "verification_required": "是否需要提供验证报告|是否需要验证"
+  },
+  "domains": {
+    "software": [
+      "软件方向",
+      "软件"
+    ],
+    "hardware": [
+      "硬件方向",
+      "硬件",
+      "电路"
+    ],
+    "mechanical": [
+      "结构方向",
+      "结构",
+      "外观"
+    ],
+    "process": [
+      "工艺方向",
+      "工艺",
+      "生产"
+    ],
+    "optical": [
+      "光学方向",
+      "光学"
+    ],
+    "system": [
+      "系统方向",
+      "系统"
+    ],
+    "labeling": [
+      "说明书",
+      "标签",
+      "标识"
+    ]
+  },
+  "not_involved": "不涉及|无变更|无",
+  "attachment_columns": {
+    "sequence": [
+      "序号",
+      "No."
+    ],
+    "product": [
+      "适用型号",
+      "适用产品",
+      "产品型号",
+      "型号",
+      "产品名称",
+      "适用范围"
+    ],
+    "file_number": [
+      "文件编号",
+      "物料编码",
+      "编号",
+      "图号"
+    ],
+    "file_title": [
+      "文件名称",
+      "物料名称",
+      "名称"
+    ],
+    "old_version": [
+      "原版本",
+      "旧版本",
+      "更改前版本",
+      "原版本号"
+    ],
+    "new_version": [
+      "新版本",
+      "更改后版本",
+      "新版本号",
+      "现版本"
+    ],
+    "affects_registration": [
+      "是否涉及注册",
+      "涉及注册",
+      "注册"
+    ],
+    "disposition": [
+      "处理方式",
+      "处理意见",
+      "更改方式",
+      "操作",
+      "备注"
+    ]
+  },
+  "attachment_min_columns": 3,
+  "operations": {
+    "create": [
+      "新增",
+      "新建",
+      "首版"
+    ],
+    "upgrade": [
+      "升版",
+      "换版",
+      "修订"
+    ],
+    "obsolete": [
+      "作废",
+      "废止",
+      "停用"
+    ]
+  },
+  "change_point_reference": "(?:更改|变更)内容\\s*[（(]?\\s*([一二三四五六七八九十]+|\\d+)\\s*[)）]?\\s*(?:(?:更改|变更)点\\s*([\\d、,，/和及至~～\\-\\s]+))?",
+  "product_split": "[、,，;；/]+",
+  "version_pattern": "^[Vv]?\\d+(?:\\.\\d+)*[A-Za-z]?$",
+  "capture_people": false,
+  "glyph_rules": [
+    {
+      "pattern": "[≤£](?=\\s?[\\u4e00-\\u9fffA-Za-z])",
+      "replace": "□",
+      "why": "some converters render the unchecked Wingdings/Symbol box as ≤ or £; only replaced when followed by an option label, never before a number"
+    }
+  ]
+}

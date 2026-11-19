@@ -1,0 +1,8 @@
+work/
+__pycache__/
+*.pyc
+.venv/
+mineru-out/
+*.egg-info/
+dist/
+build/

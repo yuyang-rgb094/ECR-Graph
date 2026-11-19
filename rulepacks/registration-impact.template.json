@@ -1,0 +1,49 @@
+{
+  "rulepack": "registration-impact",
+  "status": "example — a starting checklist of registration-relevant dimensions. It is NOT a statement of any regulator's rules. Your RA team must replace keywords, outcomes and basis with your jurisdiction's current regulations and guidance, citing each source.",
+  "dimensions": [
+    {"id": "RD-INTENDED-USE", "name": "Intended use / indications / contraindications", "keywords": ["预期用途", "适用范围", "适应症", "禁忌", "适用人群", "intended use", "indication"],
+     "doc_classes": ["technical_requirements", "ifu", "clinical"], "default_outcome": "likely_registration_change",
+     "questions": ["Does the change alter what the device is used for, on whom, or where?"]},
+    {"id": "RD-PRINCIPLE", "name": "Working principle / mechanism", "keywords": ["工作原理", "作用机理", "成像原理", "测量原理", "principle"],
+     "doc_classes": ["technical_requirements"], "default_outcome": "likely_registration_change",
+     "questions": ["Does the physical/measurement principle change, or only its implementation?"]},
+    {"id": "RD-STRUCTURE", "name": "Structure and composition / configurations", "keywords": ["结构组成", "组成", "附件", "配件", "型号", "配置", "configuration", "accessory"],
+     "doc_classes": ["technical_requirements", "ifu", "bom"], "default_outcome": "needs_ra_review",
+     "questions": ["Is the changed part listed in the registered structure/composition or model list?"]},
+    {"id": "RD-PERFORMANCE", "name": "Performance requirements in the registered technical requirements", "keywords": ["性能", "指标", "分辨率", "精度", "准确度", "范围", "速度", "帧率", "功率", "技术要求", "performance"],
+     "doc_classes": ["technical_requirements", "inspection"], "compare_with_registered": true, "default_outcome": "needs_ra_review",
+     "questions": ["Which registered performance items could the change affect, and does the new value stay within the registered limit?"]},
+    {"id": "RD-SOFTWARE", "name": "Software (registered version rule, significant updates)", "keywords": ["软件", "算法", "功能", "界面", "版本", "software", "algorithm"],
+     "doc_classes": ["software_release", "software_requirements"], "software_version_rule": true, "default_outcome": "needs_ra_review",
+     "questions": ["Does the change alter clinical functions, algorithms or safety-related behaviour, or only fix defects / improve non-clinical aspects?"]},
+    {"id": "RD-MATERIAL", "name": "Patient-contacting materials", "keywords": ["材料", "材质", "接触人体", "涂层", "胶", "material", "coating"],
+     "doc_classes": ["material_spec", "biocompatibility"], "default_outcome": "likely_registration_change", "evidence_expected": ["biocompatibility"],
+     "questions": ["Does any patient- or user-contacting material, supplier process or coating change?"]},
+    {"id": "RD-STERILE", "name": "Sterilisation, shelf life, packaging", "keywords": ["灭菌", "有效期", "包装", "货架", "无菌", "steril", "shelf life"],
+     "doc_classes": ["process", "verification"], "default_outcome": "likely_registration_change",
+     "questions": ["Does sterilisation method, sterile barrier or shelf life change?"]},
+    {"id": "RD-LABELING", "name": "Registered labeling / IFU content", "keywords": ["说明书", "标签", "警示", "注意事项", "标识", "label", "IFU"],
+     "doc_classes": ["ifu", "label"], "default_outcome": "needs_ra_review",
+     "questions": ["Does the change alter registered statements in the IFU/label, or only editorial content?"]},
+    {"id": "RD-SAFETY", "name": "Electrical safety / EMC relevant design", "keywords": ["电源", "供电", "电磁", "EMC", "绝缘", "接地", "漏电", "电池"],
+     "doc_classes": ["electrical_safety_emc"], "default_outcome": "needs_ra_review", "evidence_expected": ["electrical_safety_emc"],
+     "questions": ["Does the change affect insulation, power supply, emissions or immunity? Is re-testing planned?"]},
+    {"id": "RD-SITE", "name": "Manufacturing site / outsourced critical processes", "keywords": ["生产地址", "产地", "委托生产", "外协", "关键工艺", "特殊过程"],
+     "doc_classes": ["process"], "default_outcome": "needs_ra_review",
+     "questions": ["Does the change move production, or change a critical/special process or its supplier?"]}
+  ],
+  "outcome_order": ["likely_within_registration", "needs_ra_review", "insufficient_information", "likely_registration_change"],
+  "outcomes": {
+    "likely_registration_change": "Candidate: the proposal touches registered content. RA should assess before design work continues.",
+    "needs_ra_review": "Candidate: the proposal touches a registration-relevant dimension; impact depends on details only RA can judge.",
+    "likely_within_registration": "Candidate: the proposal appears to stay within registered limits; RA confirmation still required.",
+    "insufficient_information": "Cannot assess: registration items, version rule or proposal details are missing."
+  },
+  "redesign_hints": {
+    "outside_registered_limit": "Explore whether the design objective can be met while the parameter stays inside the registered limit, without reducing safety or effectiveness. If not, plan the registration change early instead of after implementation.",
+    "software_relevant_component_bump": "Your version rule marks this component as registration-relevant. Check with RA whether the change is in fact a significant update. Do not re-label the version to avoid the rule: a version must describe the change truthfully. A smaller-scope variant of the change may be an option.",
+    "structure_or_configuration": "Check whether the change can reuse already-registered components/configurations, or be phased so that registration-relevant parts are submitted together.",
+    "default": "Discuss scope alternatives with RA before implementation; record the rationale in the change request."
+  }
+}

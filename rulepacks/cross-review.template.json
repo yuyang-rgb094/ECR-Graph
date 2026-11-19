@@ -1,0 +1,50 @@
+{
+  "rulepack": "cross-review",
+  "status": "example — generic design-change practice, NOT a regulatory requirement. Replace 'basis' with clauses from your own inspection checklist, QMS procedures and past findings.",
+  "doc_classes": {
+    "technical_requirements": "产品技术要求|技术要求|Technical Requirement",
+    "ifu": "说明书|使用手册|操作手册|IFU",
+    "label": "标签|标识|铭牌|Label",
+    "risk_management": "风险管理|风险分析|FMEA|Risk",
+    "software_requirements": "软件需求|需求规格|SRS",
+    "software_design": "软件设计|架构设计|详细设计|SDD",
+    "software_release": "软件版本|配置索引|版本说明|发布说明|Release Note",
+    "software_test": "软件测试|测试报告|测试用例",
+    "drawing": "图纸|图样|装配图|零件图|Drawing",
+    "bom": "BOM|物料清单|明细表",
+    "material_spec": "物料规格|规格书|采购规范",
+    "process": "工艺|作业指导|作业规程|SOP",
+    "inspection": "检验规程|检验规范|检验标准|检验记录|检验指导",
+    "dmr_index": "主文档|文件清单|DMR",
+    "verification": "验证报告|验证方案|确认报告|Verification",
+    "biocompatibility": "生物相容|Biocompat",
+    "electrical_safety_emc": "电磁兼容|EMC|电气安全|安全测试",
+    "clinical": "临床评价|Clinical"
+  },
+  "rules": [
+    {"id": "XR-001", "when_changed": ["technical_requirements"], "must_review": ["ifu", "label", "inspection", "verification", "risk_management"], "severity": "high",
+     "message": "Technical requirements changed; companion documents should be evaluated.", "basis": "example: design-change evaluation of constituent parts (e.g. ISO 13485 7.3.9) — replace with your clause"},
+    {"id": "XR-002", "when_changed": ["software_requirements", "software_design"], "must_review": ["software_test", "software_release", "risk_management"], "severity": "high",
+     "message": "Software requirement/design changed; tests, release record and risk file should be evaluated.", "basis": "example: software maintenance & configuration management (e.g. IEC 62304 cl. 6, 8) — replace"},
+    {"id": "XR-003", "when_changed": ["software_release"], "must_review": ["software_test", "ifu"], "severity": "medium",
+     "message": "Software release/configuration changed; test evidence and user-facing description should be evaluated.", "basis": "example — replace"},
+    {"id": "XR-004", "when_changed": ["drawing", "material_spec"], "must_review": ["bom", "inspection", "process"], "severity": "medium",
+     "message": "Part definition changed; BOM, incoming/process inspection and work instructions should be evaluated.", "basis": "example — replace"},
+    {"id": "XR-005", "when_changed": ["bom"], "must_review": ["dmr_index", "process"], "severity": "medium",
+     "message": "BOM changed; DMR index and process documents should be evaluated.", "basis": "example — replace"},
+    {"id": "XR-006", "when_changed": ["ifu"], "must_review": ["label", "risk_management"], "severity": "medium",
+     "message": "IFU changed; labels and risk-control information for safety should be evaluated.", "basis": "example — replace"}
+  ],
+  "domain_expectations": [
+    {"id": "XD-001", "domain": "software", "expects_changed": ["software_release", "software_requirements", "software_design", "software_test"], "severity": "medium",
+     "message": "Change point declares a software direction but no software document appears in its file list."},
+    {"id": "XD-002", "domain": "mechanical", "expects_changed": ["drawing", "material_spec", "bom"], "severity": "medium",
+     "message": "Change point declares a mechanical direction but no drawing/spec/BOM appears in its file list."},
+    {"id": "XD-003", "domain": "process", "expects_changed": ["process", "inspection"], "severity": "low",
+     "message": "Change point declares a process direction but no work instruction/inspection document appears in its file list."},
+    {"id": "XD-004", "domain": "labeling", "expects_changed": ["ifu", "label"], "severity": "medium",
+     "message": "Change point mentions labeling/IFU but no IFU or label document appears in its file list."},
+    {"id": "XD-005", "domain": "hardware", "expects_changed": ["drawing", "bom", "material_spec", "electrical_safety_emc"], "severity": "low",
+     "message": "Change point declares a hardware direction but no hardware definition document appears in its file list."}
+  ]
+}
