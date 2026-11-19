@@ -1,13 +1,3 @@
----
-title: ECR-Graph 架构与数据契约
-date: 2026-11-19
-author: agent:Claude
-type: internal
-register: C
-status: draft
-relates: []
----
-
 # 架构与数据契约
 
 ## 1. 分层

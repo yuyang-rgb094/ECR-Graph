@@ -1,13 +1,3 @@
----
-title: ECR-Graph Agent 操作手册与 Grill 协议
-date: 2026-11-19
-author: agent:Claude
-type: internal
-register: C
-status: draft
-relates: []
----
-
 # Agent 操作手册
 
 本手册写给在客户环境里运行 ECR-Graph 的 Agent。

@@ -1,13 +1,3 @@
----
-title: ECR-Graph 大文档解析（MinerU）
-date: 2026-11-19
-author: agent:Claude
-type: internal
-register: C
-status: draft
-relates: []
----
-
 # 大文档解析：MinerU
 
 满足以下任一条件时，ECR-Graph 会把文件交给 MinerU 解析：

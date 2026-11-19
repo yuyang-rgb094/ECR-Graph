@@ -1,13 +1,3 @@
----
-title: ECR-Graph 公开发布前检查清单
-date: 2026-11-19
-author: agent:Claude
-type: internal
-register: C
-status: draft
-relates: []
----
-
 # 公开发布前检查清单
 
 工具包在私有工作区中开发。公开前必须逐项完成以下检查，并由项目 Owner 签字确认。
