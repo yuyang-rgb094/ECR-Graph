@@ -1,13 +1,3 @@
----
-title: ECR-Graph README
-date: 2026-11-20
-author: agent:Claude
-type: internal
-register: C
-status: draft
-relates: []
----
-
 # ECR-Graph
 
 **Evidence-governed engineering-change graphs for medical-device teams.**
