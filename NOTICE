@@ -1,0 +1,10 @@
+ECR-Graph
+Copyright 2026 The ECR-Graph Authors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Optional third-party components are NOT bundled and are installed separately
+by the user; each is governed by its own license:
+  - MinerU: MinerU Open Source License (based on Apache 2.0 with additional terms)
+  - LibreOffice: Mozilla Public License 2.0
+  - pypdf: BSD-3-Clause
